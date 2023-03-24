@@ -32,9 +32,12 @@ if __name__ == '__main__':
     # train(diffusion)
 
     # 测试网络 使用minist测试集图片训练100个epochs后的结果 能够输出类似数字的图片了
+    show_pic_num = 8
     net = torch.load("pre_trained\\ddpm_unet_100epochs.pth").to(device)
-    x = diffusion.sample_noise_back_to_image(net, 1)
+    x = diffusion.sample_noise_back_to_image(net, show_pic_num)
     # 1, 1, 32, 32的输入和输出
-    x = np.array((x[0][0]).cpu().numpy())
-    plt.imshow(x)
+    # x = np.array((x[0][0]).cpu().numpy())
+    for i, img in enumerate(x.squeeze(dim=1).cpu()):
+        plt.subplot(2, 4, i+1)
+        plt.imshow(img)
     plt.show()

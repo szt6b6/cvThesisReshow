@@ -67,11 +67,11 @@ class Diffusion_simple:
         noise = None
         with torch.no_grad():
             for t in reversed(range(self.time_steps)):
-                t = (torch.ones(n) * t).long().to(self.device)
-                predicted_noises = model(x, t) # 用网络在t时间步的噪声图预测出该时刻的噪声
-                alpha = self.alphas[t][:, None, None, None]
-                alpha_hat = self.alphas_hat[t][:, None, None, None]
-                beta = self.betas[t][:, None, None, None]
+                t_ = (torch.ones(n) * t).long().to(self.device)
+                predicted_noises = model(x, t_) # 用网络在t时间步的噪声图预测出该时刻的噪声
+                alpha = self.alphas[t_][:, None, None, None]
+                alpha_hat = self.alphas_hat[t_][:, None, None, None]
+                beta = self.betas[t_][:, None, None, None]
 
                 if t > 1:
                     noise = torch.randn_like(predicted_noises)
