@@ -1,0 +1,14 @@
+# # 数据集源路径root、训练集、验证集、测试集地址
+path: /home/szt/projects/hg/datasets   # 数据集源路径root dir
+train: train/images # 图片路径
+val: val/images  # 图片路径
+test: test/images  # 图片路径              
+
+# path: /home/szt/projects/hg/datasets/hard_samples   # 数据集源路径root dir
+# train: train/images # 图片路径
+# val: val/images  # 图片路径    
+# test: test/images  # 图片路径      
+
+# 数据集类别信息
+nc: 3  # 数据集类别数量
+names: [ 'bg', 'target', 'target1']  # 数据集类别名
